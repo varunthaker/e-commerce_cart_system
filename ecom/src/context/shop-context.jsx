@@ -1,5 +1,4 @@
 import React, {createContext, useState} from 'react'
-import Product from '../pages/shop/Product'
 import PRODUCTS from '../products'
 
 export const ShopContext = createContext()
@@ -28,7 +27,6 @@ export const ShopContextProvider = (props) => {
                 [itemId]: prevItem[itemId]+1 } 
             )
         })
-
     }
 
     const removeFromCart = (itemId) => {

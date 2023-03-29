@@ -3,7 +3,10 @@ import './checkout.css'
 
 const Checkout = () => {
   return (
-    <div className='item-checkout'>Page under Progress</div>
+    <div className='item-checkout'>
+      <p>Your'e Order has been placed! <br />Happy Shopping!</p>
+      
+    </div>
   )
 }
 
