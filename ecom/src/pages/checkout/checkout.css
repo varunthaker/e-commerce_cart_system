@@ -1,0 +1,8 @@
+
+.item-checkout {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    color: red;
+    font-size: 50px;
+}
