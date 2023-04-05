@@ -1,30 +1,29 @@
-import React, {createContext, useState} from 'react'
-import PRODUCTS from '../products'
+import React, {createContext, useState, useEffect} from 'react'
+import axios from 'axios'
+
+
 
 export const ShopContext = createContext()
 
 export const ShopContextProvider = (props) => {
 
+    const [productData, setProductData] = useState([])
+    const [cartItems, setCartItems] = useState({})
+
+    useEffect(() => {
+        axios.get('https://fakestoreapi.com/products')
+        .then((res)=> {
+            
+            setProductData(res.data)
+        })
+      },[])
     
-
-    const initialCart = ()=> {
-
-        let cart = {}
-
-        PRODUCTS.map((product) => cart[product.id] = 0)
-
-        return cart
-    }    
-
-    const [cartItems, setCartItems] = useState(initialCart())
-
     const addToCart = (itemId) => {
 
         setCartItems((prevItem) => {
-
             return (
                 {...prevItem,
-                [itemId]: prevItem[itemId]+1 } 
+                [itemId]: prevItem[itemId] === undefined ? 1 : prevItem[itemId]+1 } 
             )
         })
     }
@@ -37,20 +36,17 @@ export const ShopContextProvider = (props) => {
                 [itemId]: prevItem[itemId]-1 } 
             )
         })
-
     }
 
     const updateCartItems = ((newAmount, itemId) => {
 
         setCartItems((prevItem) => {
-
             return (
                 {
                     ...prevItem,
                     [itemId]: newAmount
                 }
             )
-
         })
     })
 
@@ -61,16 +57,15 @@ export const ShopContextProvider = (props) => {
             for (const item in cartItems) {
 
                 if(cartItems[item] > 0) {
-                    let productInfo = PRODUCTS.find((product)=> product.id === Number(item)) 
+                    let productInfo = productData.find((product)=> product.id === Number(item)) 
                     totalCartvalue += (cartItems[item]*productInfo.price)
                 }
             }
             return totalCartvalue
     }
 
-    const contextValue = {cartItems, addToCart, removeFromCart, updateCartItems, totalCartAmount}
+    const contextValue = {cartItems, addToCart, removeFromCart, updateCartItems, totalCartAmount, productData}
     
-
     return (
     <ShopContext.Provider value = {contextValue}>{props.children}</ShopContext.Provider>
     ) 

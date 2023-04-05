@@ -1,16 +1,19 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './shop.css'
-import PRODUCTS from '../../products.js'
 import Product  from "./Product.jsx";
+import { ShopContext } from '../../context/shop-context'; 
 
 const Shop = () => {
+
+  const {productData} = useContext(ShopContext)
+
   return (
     <div className = 'shop'>
     <div>
         <h1 className = 'shopTitle'> VarunTech Shop </h1>
     </div>
     <div className = 'products'> 
-        {PRODUCTS.map((product)=> (
+        {productData.map((product)=> (
             <Product product = {product}
             />
         ))}        

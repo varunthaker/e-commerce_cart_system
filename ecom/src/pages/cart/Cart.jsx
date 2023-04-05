@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import PRODUCTS from '../../products'
+
 import { ShopContext } from '../../context/shop-context'
 import { CartItem } from './CartItem'
 
@@ -8,7 +8,7 @@ import './cart.css'
 
 const Cart = () => {
 
-  const {cartItems,totalCartAmount} = useContext(ShopContext)
+  const {cartItems,totalCartAmount, productData} = useContext(ShopContext)
   const navigate =useNavigate()
 
   const totalCartValue = totalCartAmount()
@@ -19,20 +19,23 @@ const Cart = () => {
         <h1> Your Cart Items </h1>
       </div>
       <div className = 'cart'>
-      { PRODUCTS.map((product) => {
+      
+     
+      { productData.map((product) => {
             if(cartItems[product.id] !== 0 ){
-                return <CartItem data = {product} />;
+                if(cartItems[product.id] >0) {
+                  return <CartItem data = {product} />;
+                }
               } else {
                 return null;
               }
       })}
 
       {totalCartValue>0 ? <div className='checkout'>
-      <p> Grand Total: € {totalCartValue}</p>
+      <p> Grand Total: € {totalCartValue.toFixed(2)}</p>
       <button onClick = {()=>navigate('/')}>Continue Shopping</button>
       <button onClick = {() => navigate('/checkout')}>Checkout</button>
       </div> : 
-
       <div>
       <img src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq0EqBO8XLODha0SfPLYwDGQ_9mF8bKhvN-hqwrFx2gl4txwfDq37M35ex913jere6z24&usqp=CAU' alt = 'emptycart'></img>
       <h2 class='emptyCart'>Your Cart is Empty</h2>

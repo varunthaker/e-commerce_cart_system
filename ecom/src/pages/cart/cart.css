@@ -9,7 +9,6 @@
     width: 700px;
     height: 250px;
     display: flex;
-  
     align-items: center;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
     border-radius: 25px;
@@ -17,12 +16,15 @@
   }
   
   .cartItem img {
-    width: 200px;
+    width: 150px;
+    height: 150px;
+    padding-left: 20px;
   }
   
   .cartItem .description {
     width: 100%;
     font-size: 20px;
+    padding-left: 20px;
   }
   
   .countHandler input {

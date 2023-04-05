@@ -4,11 +4,13 @@
     font-size: 40px;
   }
   .products {
-    width: 100%;
+    
     height: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     place-items: center;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 1rem
+    
   }
   
   .product {
@@ -20,10 +22,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
   }
   
   .product img {
-    width: 400px;
+    max-width: 200px;
     height: auto
   }
   
@@ -51,4 +54,13 @@
     background-color: rgb(19, 19, 19);
     color: white;
     cursor: pointer;
+  }
+
+  @media (max-width:600px) {
+    .products {grid-template-columns: repeat(2,1fr);}
+    
+  }
+
+  @media (max-width:350px) {
+    .products {grid-template-columns: repeat(1,1fr);}
   }

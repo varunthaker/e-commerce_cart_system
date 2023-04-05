@@ -10,8 +10,6 @@ function Navbar () {
         <div className = 'links'>
             <NavLink to = '/'> Shop</NavLink>
             <NavLink to = '/cart'> <ShoppingCart size={32} /></NavLink>
-                                                                                                            
-            
         </div>
         </div>
         )
