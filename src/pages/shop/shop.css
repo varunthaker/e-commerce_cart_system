@@ -10,7 +10,6 @@
     place-items: center;
     grid-template-columns: repeat(3,1fr);
     grid-gap: 1rem
-    
   }
   
   .product {
@@ -22,7 +21,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
   }
   
   .product img {

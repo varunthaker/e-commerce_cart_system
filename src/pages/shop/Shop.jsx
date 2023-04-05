@@ -10,7 +10,7 @@ const Shop = () => {
   return (
     <div className = 'shop'>
     <div>
-        <h1 className = 'shopTitle'> VarunTech Shop </h1>
+        <h1 className = 'shopTitle'> Varun's Shop </h1>
     </div>
     <div className = 'products'> 
         {productData.map((product)=> (
